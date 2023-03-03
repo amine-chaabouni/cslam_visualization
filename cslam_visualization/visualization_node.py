@@ -6,6 +6,9 @@ from cslam_common_interfaces.msg import PoseGraph
 from cslam_visualization.pose_graph_visualizer import PoseGraphVisualizer
 from cslam_visualization.keypoints3d_visualizer import Keypoints3DVisualizer
 from cslam_visualization.pointcloud_visualizer import PointCloudVisualizer
+from rclpy.parameter import Parameter
+from rcl_interfaces.msg import ParameterDescriptor
+
 
 if __name__ == '__main__':
 
@@ -19,7 +22,7 @@ if __name__ == '__main__':
                         ('enable_pointclouds_visualization', False),
                         ('produce_mesh', False),
                         ('voxel_size', 0.5),
-                        ('rotation_to_sensor_frame', None),
+                        ('rotation_to_sensor_frame', None, ParameterDescriptor(dynamic_typing=True)),
                         ('pose_graph_markers_size', 0.1)])
     params = {}
     params['nb_colors'] = node.get_parameter(
